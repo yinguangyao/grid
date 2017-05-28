@@ -1,0 +1,74 @@
+@mixin clearfix {
+	&::after {
+		content: "";
+		display: table;
+		clear: both;
+		height: 0;
+	}
+}
+
+@mixin make-container($gutter: $grid-gutter-width) {
+	margin-left: auto;
+	margin-right: auto;
+	padding-left: ceil($gutter / 2);
+	padding-right: floor($gutter / 2);
+	@include clearfix;
+}
+
+@mixin make-row($gutter: $grid-gutter-width) {
+	margin-left: - ceil($gutter / 2);
+	margin-right: - floor($gutter / 2);
+	@include clearfix;
+}
+
+@mixin make-grid-columns($i: 1, $list: ".col-xs-#{$i}, .col-sm-#{$i}, .col-md-#{$i}, .col-lg-#{$i}") {
+	@for $i from 2 through $grid-columns {
+		$list: "#{$list}, .col-xs-#{$i}, .col-sm-#{$i}, .col-md-#{$i}, .col-lg-#{$i}"
+	}
+	#{$list} {
+		min-height: 1px;
+		position: relative;
+		padding-left:  ceil(($grid-gutter-width / 2));
+    	padding-right: floor(($grid-gutter-width / 2));
+    	box-sizing: border-box;
+	}
+}
+
+@mixin calc-grid-column($method, $breakpoint, $index: 1) {
+	@for $index from 1 through $grid-columns {
+		@media #{map-get($breakpoints, $breakpoint)} {
+			@if ($method == width) {
+				.col-#{$breakpoint}-#{$index} {
+					float: left;
+					width: percentage(($index / $grid-columns));
+				}
+			}
+			@if ($method == offset) {
+				.col-#{$breakpoint}-#{$method}-#{$index} {
+					margin-left: percentage(($index / $grid-columns));
+				}
+			} 
+			@if ($method == pull) {
+				.col-#{$breakpoint}-#{$method}-#{$index} {
+					right: percentage(($index / $grid-columns)); 
+				}
+			}
+			@if ($method == push) {
+				.col-#{$breakpoint}-#{$method}-#{$index} {
+					left: percentage(($index / $grid-columns)); 
+				}
+			}
+		}
+	}
+}
+
+@mixin make-grid() {
+	@include make-grid-columns;
+	@each $method in $grid-methods {
+		@each $breakpoint in $breakpointList {
+			@include calc-grid-column($method, $breakpoint);
+		}
+	} 
+}
+
+

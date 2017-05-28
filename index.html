@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0" />
+		<title>栅格布局</title>
+		<link rel="stylesheet" href="css/grid.css" />
+		<style>
+			* {
+				margin: 0;
+				padding: 0;
+			}
+			div[class^="col"] {
+				line-height: 100px;
+				color: white;
+				text-align: center;
+			}
+
+		</style>
+	</head>
+	<body>
+		<div id="container">
+			<div class="row">
+				<div class="col-md-10 col-sm-6" style="background-color: blue;">11</div>
+				<div class="col-md-10 col-sm-offset-3 col-sm-3" style="background-color: red;">22</div>
+				<div class="col-md-4 col-sm-12" style="background-color: yellow;">33</div>
+			</div>
+			<div class="row">
+				<div class="col-md-14 col-sm-6" style="background-color: blue;">44</div>
+				<div class="col-md-4 col-sm-3" style="background-color: purple;">55</div>
+				<div class="col-md-6 col-sm-3" style="background-color: gray;">66</div>
+			</div>
+			<div class="row">
+				<div class="col-md-5 col-sm-3" style="background-color: black;">77</div>
+				<div class="col-md-5 col-sm-5" style="background-color: yellow;">88</div>
+				<div class="col-md-2 col-sm-4" style="background-color: green;">99</div>
+			</div>
+			<div class="row">
+				<div class="col-md-6 col-sm-6 col-sm-push-6" style="background-color: gray;">100</div>
+				<div class="col-md-6 col-sm-6 col-sm-pull-6" style="background-color: blue;">110</div>
+			</div>
+		</div>

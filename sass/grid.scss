@@ -1,0 +1,20 @@
+@import "./_variables.scss";
+@import "./_grid-minixs.scss";
+
+.container {
+	@include make-container;
+	@each $screen in $breakpointList {
+		$query: map-get($breakpoints, $screen);
+		$container-width: map-get($containers, $screen);
+		@if $query {
+			@media #{$query} {
+				width: $container-width;
+			}
+		}
+	}
+}
+.row {
+	@include make-row;
+}
+
+@include make-grid;

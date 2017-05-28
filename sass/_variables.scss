@@ -1,0 +1,23 @@
+$grid-gutter-width: 30px !default;
+$grid-columns: 24 !default;
+// 断点
+$breakpoints: (
+  'xs': 'only screen and (max-width: 767px)',
+  'sm': 'only screen and (min-width: 768px) and (max-width: 991px)',
+  'md': 'only screen and (min-width: 992px) and (max-width: 1199px)',
+  'lg': 'only screen and (min-width: 1200px)',
+) !default;
+
+$breakpointList: map-keys($breakpoints);
+
+$container-sm: (720 + $grid-gutter-width) !default;
+$container-md: (940 + $grid-gutter-width) !default;
+$container-lg: (1140 + $grid-gutter-width) !default;
+
+$containers: (
+	'sm': #{$container-sm},
+	'md': #{$container-md},
+	'lg': #{$container-lg}
+) !default;
+
+$grid-methods: width offset pull push !default;
